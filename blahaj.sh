@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Blahaj?(y/n):"
 read result
 if [ "$result" = "y" ]; then
