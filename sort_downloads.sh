@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The first find command in each group is for printing the results to a hidden text file
-# in the HOME directory
+# in the current working directory
 # maxdepth set to 1 in case you have any folders in your downloads 
 # that you'd rather not disturb
 
