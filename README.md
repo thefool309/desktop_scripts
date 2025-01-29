@@ -1,2 +1,2 @@
 # This is a repository to store the various scripts I use on my linux Desktop.
-For now they are all in bash but I may use python or something like that in the future 
+For now they are all in bash but I may use python or something like that in the future. This will be where I keep most the things that I write to put in my "Tools" directory. I don't see any reason why these shouldn't be available to others for educational or personal use. I doubt you'll find any commercial use from these but if you do then by all means go for it. 
