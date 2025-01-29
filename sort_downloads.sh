@@ -17,11 +17,12 @@ else
 fi
 dirName=".sortResults"
 # Move Videos
+find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
 find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} ~/DiskImages/ \; > ./$dirName/$filename
 find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec mv {} ~/DiskImages/ \;
 # Move ISO files
 find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec echo mv {} ~/DiskImages/ \; >> ./$dirName/$filename
-find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec mv {} ~/DiskImages/ \; 
+find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec mv {} ~/DiskImages/ \; -exec echo "Found: {}" \;
 # Move Pictures
 find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.webp" \) -exec echo mv {} ~/Pictures/ToBeSorted/ \; >> ./$dirName/$filename 
 find ~/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.webp" \) -exec mv {} ~/Pictures/ToBeSorted/ \;
