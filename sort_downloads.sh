@@ -4,7 +4,7 @@
 # in the current working directory
 # maxdepth set to 1 in case you have any folders in your downloads 
 # that you'd rather not disturb
-set -x
+# set -x
 #a file to store all the results
 now=$(date +"%m_%d_%Y_%H_%M_%S")
 filename="sortResults_$now.txt"
@@ -17,34 +17,39 @@ fi
 
 if [ ! -d "$HOME/DiskImages" ]; then
     echo "$HOME/DiskImages does not exist, creating it now..."
-    mkdir -p "$HOME/DiskImages"
-fi
-
-if [ ! -d "$HOME/Pictures/ToBeSorted" ]; then
-    echo "$HOME/Pictures/ToBeSorted does not exist, creating it now..."
-    mkdir -p "$HOME/Pictures/ToBeSorted"
-fi
-
-if [ ! -d "$HOME/Archives" ]; then
-    echo "$HOME/Archives does not exist, creating it now..."
-    mkdir -p "$HOME/Archives"
-fi
-
-if [ ! -d "$HOME/Documents" ]; then
-    echo "$HOME/Documents does not exist, creating it now..."
-    mkdir -p "$HOME/Documents"
+    mkdir -p "$HOME/DiskImages/"
 fi
 
 if [ ! -d "$HOME/Pictures/SVGs/" ]; then
-    echo "$HOME/Pictures/SVGs/does not exist, creating it now..."
+    echo "$HOME/Pictures/SVGs/ does not exist, creating it now..."
     mkdir -p "$HOME/Pictures/SVGs/"
+fi
+
+if [ ! -d "$HOME/Pictures/ToBeSorted" ]; then
+    echo "$HOME/Pictures/ToBeSorted/ does not exist, creating it now..."
+    mkdir -p "$HOME/Pictures/ToBeSorted/"
+fi
+
+if [ ! -d "$HOME/Archives" ]; then
+    echo "$HOME/Archives/ does not exist, creating it now..."
+    mkdir -p "$HOME/Archives/"
+fi
+
+if [ ! -d "$HOME/Documents" ]; then
+    echo "$HOME/Documents/ does not exist, creating it now..."
+    mkdir -p "$HOME/Documents/"
+fi
+
+if [ ! -d "$HOME/Videos" ]; then
+    echo "$HOME/Videos/ does not exist, creating it now..."
+    mkdir -p "$HOME/Videos/"
 fi
 
 dirName=".sortResults"
 # Move Videos
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} $HOME/DiskImages/ \; > ./$dirName/$filename
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec mv {} $HOME/DiskImages/ \;
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} $HOME/Videos/ \; > ./$dirName/$filename
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec mv {} $HOME/Videos/ \;
 # Move ISO files
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec echo mv {} $HOME/DiskImages/ \; >> ./$dirName/$filename 
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec mv {} $HOME/DiskImages/ \; 
