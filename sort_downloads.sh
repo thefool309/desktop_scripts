@@ -15,7 +15,7 @@ if [ ! -e "./.sortResults/" ]; then
     mkdir .sortResults/
 fi
 
-if [ ! -d "$HOME/DiskImages" ]; then
+if [ ! -d "$HOME/DiskImages/" ]; then
     echo "$HOME/DiskImages does not exist, creating it now..."
     mkdir -p "$HOME/DiskImages/"
 fi
@@ -25,29 +25,34 @@ if [ ! -d "$HOME/Pictures/SVGs/" ]; then
     mkdir -p "$HOME/Pictures/SVGs/"
 fi
 
-if [ ! -d "$HOME/Pictures/ToBeSorted" ]; then
+if [ ! -d "$HOME/Pictures/ToBeSorted/" ]; then
     echo "$HOME/Pictures/ToBeSorted/ does not exist, creating it now..."
     mkdir -p "$HOME/Pictures/ToBeSorted/"
 fi
 
-if [ ! -d "$HOME/Archives" ]; then
+if [ ! -d "$HOME/Archives/" ]; then
     echo "$HOME/Archives/ does not exist, creating it now..."
     mkdir -p "$HOME/Archives/"
 fi
 
-if [ ! -d "$HOME/Documents" ]; then
+if [ ! -d "$HOME/Documents/" ]; then
     echo "$HOME/Documents/ does not exist, creating it now..."
     mkdir -p "$HOME/Documents/"
 fi
 
-if [ ! -d "$HOME/Videos" ]; then
+if [ ! -d "$HOME/Videos/" ]; then
     echo "$HOME/Videos/ does not exist, creating it now..."
     mkdir -p "$HOME/Videos/"
 fi
 
+if [ ! -d "$HOME/.font_backups/" ]; then
+    echo "$HOME/.font_backups/ does not exist, creating it now..."
+    mkdir -p "$HOME/.font_backups/"
+fi
+
 dirName=".sortResults"
 # Move Videos
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
+#find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} $HOME/Videos/ \; > ./$dirName/$filename
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec mv {} $HOME/Videos/ \;
 # Move ISO files
@@ -65,6 +70,10 @@ find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.zip" -o -iname "*.7z" -o 
 # move documents
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.txt" -o -iname "*.pdf" -o -iname "*.doc" -o -iname "*.ppt" -o -iname "*.docx" -o -iname "*.pptx" \) -exec echo mv {} $HOME/Documents/ \; >> ./$dirName/$filename
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.txt" -o -iname "*.pdf" -o -iname "*.doc" -o -iname "*.ppt" -o -iname "*.docx" -o -iname "*.pptx" \) -exec mv {} $HOME/Documents/ \;
+#move fonts
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec echo mv {} $HOME/.font_backups/ \; >> ./$dirName/$filename
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec mv {} $HOME/.font_backups/ \;
+
 
 echo "operation complete!"
 echo "please check the file inside" 
