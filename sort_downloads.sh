@@ -73,8 +73,7 @@ find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.txt" -o -iname "*.pdf" -o
 #move fonts
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec echo mv {} $HOME/.font_backups/ \; >> ./$dirName/$filename
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec mv {} $HOME/.font_backups/ \;
-
-
+ 
 echo "operation complete!"
 echo "please check the file inside" 
 echo "./$dirName/$filename for your results"
