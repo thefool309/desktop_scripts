@@ -4,7 +4,7 @@
 # in the current working directory
 # maxdepth set to 1 in case you have any folders in your downloads 
 # that you'd rather not disturb
-# set -x
+# set -x # uncomment this to turn on debugging
 #a file to store all the results
 now=$(date +"%m_%d_%Y_%H_%M_%S")
 filename="sortResults_$now.txt"
