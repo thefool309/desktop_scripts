@@ -45,16 +45,24 @@ if [ ! -d "$HOME/Videos/" ]; then
     mkdir -p "$HOME/Videos/"
 fi
 
+if [ ! -d "$HOME/Music/SongsToSort/" ]; then
+    echo "$HOME/Music/SongsToSort/ does not exist, creating it now..."
+    mkdir -p "$HOME/Music/SongsToSort/"
+fi
+
 if [ ! -d "$HOME/.font_backups/" ]; then
     echo "$HOME/.font_backups/ does not exist, creating it now..."
     mkdir -p "$HOME/.font_backups/"
 fi
 
-dirName=".sortResults"
+dirName="$HOME/.sortResults"
 # Move Videos
 #find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} $HOME/Videos/ \; > ./$dirName/$filename
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec mv {} $HOME/Videos/ \;
+# Move Music
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" -o -iname "*.aiff" -o -iname "*.dsd" -o -iname "*.pcm" \) -exec echo mv {} $HOME/Music/SongsToSort/ \; > ./$dirName/$filename
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" -o -iname "*.aiff" -o -iname "*.dsd" -o -iname "*.pcm" \) -exec mv {} $HOME/Music/SongsToSort/ \;
 # Move ISO files
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec echo mv {} $HOME/DiskImages/ \; >> ./$dirName/$filename 
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec mv {} $HOME/DiskImages/ \; 
