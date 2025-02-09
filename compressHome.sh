@@ -30,4 +30,4 @@ echo "beginning compression"
 
 echo tar -czvf $HOME/$stageName.tar.gz $HOME/$stageName/
 # clean up by deleting stage
-# sudo rm -rv $HOME/$stageName/
+# rm -rv $HOME/$stageName/
