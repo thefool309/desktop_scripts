@@ -1,5 +1,8 @@
 #!/bin/bash
 
+### THIS SCRIPT IS UNTESTED AND BROKE MY HOME DIRECTORY
+### USE AT YOUR OWN PERIL
+
 set -x
 #prep filename
 $now = date -d "%m_%d_%Y_%H_%M"
