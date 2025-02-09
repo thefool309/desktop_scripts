@@ -2,7 +2,7 @@
 
 ### THIS SCRIPT IS UNTESTED AND BROKE MY HOME DIRECTORY
 ### USE AT YOUR OWN PERIL
-
+### DON'T DO WHAT VELMA DOES AND sudo rm -rf $HOME
 set -x
 #prep filename
 $now = date -d "%m_%d_%Y_%H_%M"
