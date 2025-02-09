@@ -4,13 +4,10 @@ if [ -z "$1" ]; then
     echo "Usage: $0 <project_name>"
     exit 1
 fi
+
 repoDir="$HOME/Repos"
-if [ -d "$repoDir" ]; then
-    echo "no $repoDir making one now..."
-    mkdir -p "$repoDir"
-else
-    echo "$repoDir Already exists..."
-fi
+mkdir -p "$repoDir"
+echo "$repoDir is ready."
 
 projectName="$1"
 projectPath="$repoDir/$projectName"
@@ -58,7 +55,7 @@ echo "Project $projectName created at $projectPath"
 
 if ! command -v codium &> /dev/null; then
     echo "VSCodium not found. navigating to the directory"
-    cd "$projectPath" ... || exit 1
+    cd "$projectPath" || exit 1
 else
     codium "$projectPath"
 fi
