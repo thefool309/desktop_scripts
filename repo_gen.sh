@@ -52,9 +52,15 @@ echo "# $projectName" > "$projectPath/README.md"
 echo "Project $projectName created at $projectPath"
 
 # Open in VSCodium fallback on nano
+cd "$projectPath/build" || exit 1
+cmake .. -G Ninja  # This tells CMake to use Ninja for the build system
+
+# Build the project with Ninja
+ninja
+
 
 if ! command -v codium &> /dev/null; then
-    echo "VSCodium not found. navigating to the directory"
+    echo "VSCodium not found. navigating to the project directory..."
     cd "$projectPath" || exit 1
 else
     codium "$projectPath"
