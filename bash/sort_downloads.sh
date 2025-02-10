@@ -55,7 +55,7 @@ if [ ! -d "$HOME/.font_backups/" ]; then
     mkdir -p "$HOME/.font_backups/"
 fi
 
-dirName="$HOME/.sortResults"
+dirName="$HOME.sortResults"
 # Move Videos
 #find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} $HOME/Videos/ \; > ./$dirName/$filename
