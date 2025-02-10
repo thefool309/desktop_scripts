@@ -89,7 +89,7 @@ fi
 # compress stage into archive
 echo "beginning compression"
 
-tar -czvf "$HOME/$stageName.tar.gz" "$HOME/$stageName/"
+tar -czf "$HOME/$stageName.tar.gz" "$HOME/$stageName/"
 # clean up by deleting stage
 rm -rf "$HOME/${stageName:?}/"
 # now move backups to destination
