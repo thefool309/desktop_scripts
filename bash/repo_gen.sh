@@ -1,7 +1,6 @@
 #!/bin/bash
 
-### THIS SCRIPT IS UNTESTED
-### USE AT YOUR OWN RISK
+### Script has now been tested and is fully functional :3 Happy coding 
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <project_name>"
