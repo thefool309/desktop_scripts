@@ -4,10 +4,16 @@
 ### USE AT YOUR OWN PERIL
 ### DON'T DO WHAT VELMA DOES AND sudo rm -rf $HOME
 set -x
-#prep filename
+#prep stagename
 now=$(date +"%m_%d_%Y_%H_%M")
 
 stageName="HomeBackup_$now"
+#prep destination 
+destination="/home/$USER-backups"
+
+if [ ! -e "$destination" ]; then
+    sudo mkdir -p "$destination"
+fi 
 
 # create the stage
 echo "creating stage $HOME/$stageName/"
@@ -83,6 +89,8 @@ fi
 # compress stage into archive
 echo "beginning compression"
 
-echo tar -czvf "$HOME/$stageName.tar.gz" "$HOME/$stageName/"
+tar -czvf "$HOME/$stageName.tar.gz" "$HOME/$stageName/"
 # clean up by deleting stage
-# rm -ri $HOME/$stageName/
+rm -rf "$HOME/${stageName:?}/"
+# now move backups to destination
+sudo mv "$HOME/$stageName.tar.gz" "$destination"
