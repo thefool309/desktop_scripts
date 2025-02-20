@@ -1,0 +1,2 @@
+# change_permissions.sh
+This one is fairly simple, it takes an input directory, and changes all the permissions to read only, so that you don't accidentally delete files you don't want to. I used this script to change all my photos to read only so I wouldn't accidentally delete them from the command line while scripting. 

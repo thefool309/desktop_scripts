@@ -1,0 +1,3 @@
+# compressHome.md
+
+this one is very dangerous. In testing this I managed to delete my `/home` directory, by not paying attention to what I was doing. The purpose of this script is to take all the things in my home directory that I typically save, and put them into a staging area that is then compressed into a tar archive. Script has been fully implemented and tested. It should work as expected now, and have fail safes to ensure you don't delete your `/home`. just make sure to exercise extreme caution while testing this on your own system. 
