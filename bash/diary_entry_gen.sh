@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+# set -x
 nameOfDir="$HOME/Documents/.$USER-diary/"
 if [ -d "$nameOfDir" ]; then
     echo "$nameOfDir directory exists..."
