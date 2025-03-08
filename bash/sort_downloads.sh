@@ -59,8 +59,8 @@ dirName="$HOME/.sortResults"
 echo "$dirName is the directory"
 # Move Videos
 #find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -0 -iname "*.webm" \) -exec echo mv {} $HOME/Videos/ \; > "$dirName/$filename"
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -0 -iname "*.webm" \) -exec mv {} $HOME/Videos/ \;
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -exec echo mv {} $HOME/Videos/ \; > "$dirName/$filename"
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -exec mv {} $HOME/Videos/ \;
 # Move Music
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" -o -iname "*.aiff" -o -iname "*.dsd" -o -iname "*.pcm" \) -exec echo mv {} $HOME/Music/SongsToSort/ \; >> "$dirName/$filename"
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" -o -iname "*.aiff" -o -iname "*.dsd" -o -iname "*.pcm" \) -exec mv {} $HOME/Music/SongsToSort/ \;
