@@ -55,7 +55,15 @@ if [ ! -d "$HOME/.font_backups/" ]; then
     mkdir -p "$HOME/.font_backups/"
 fi
 
+if [ ! -d "$HOME/.torrents/" ]; then
+    echo "$HOME/.torrents/ does not exist, creating it now..."
+    mkdir -p "$HOME/.torrents/"
+fi
+
 dirName="$HOME/.sortResults"
+# move torrents first as they sometimes carry similar names
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.torrent" \) -exec echo mv {} $HOME/.torrents/ \; > "$dirName/$filename"
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.torrent" \) -exec mv {} $HOME/.torrents/ \;
 # Move Videos
 #find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -exec echo mv {} $HOME/Videos/ \; > "$dirName/$filename"
@@ -82,6 +90,8 @@ find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.txt" -o -iname "*.pdf" -o
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec echo mv {} $HOME/.font_backups/ \; >> $dirName/$filename
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec mv {} $HOME/.font_backups/ \;
  
+
+
 echo "operation complete!"
 echo "please check the file inside" 
 echo "$dirName/$filename for your results"
