@@ -68,8 +68,8 @@ find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec echo mv {} $HOME/DiskImages/ \; >> "$dirName/$filename" 
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec mv {} $HOME/DiskImages/ \; 
 # Move Pictures
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.webp" \) -exec echo mv {} $HOME/Pictures/ToBeSorted/ \; >> $dirName/$filename 
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.webp" \) -exec mv {} $HOME/Pictures/ToBeSorted/ \;
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) -exec echo mv {} $HOME/Pictures/ToBeSorted/ \; >> $dirName/$filename 
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) -exec mv {} $HOME/Pictures/ToBeSorted/ \;
 # move SVGs
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.svg" \) -exec echo mv {} $HOME/Pictures/SVGs/ \; >> $dirName/$filename 
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.svg" \) -exec mv {} $HOME/Pictures/SVGs/ \; 
