@@ -11,7 +11,7 @@ fi
 now=$(date +"%m_%d_%y")
 filename=DiaryEntry_"$now".md
 
-if [ -f "$DIARY_DIR$filename" ]; then
+if [ -f "$nameOfDir""$filename" ]; then
     timestamp=$(date +"%H%M%S") # Adds hours, minutes, seconds
     filename="DiaryEntry_${now}_${timestamp}.md"
 fi
@@ -23,12 +23,12 @@ touch "$nameOfDir""$filename"
 chmod 600 "$nameOfDir""$filename"
 
 # Add a header
-echo "# Diary Entry - $(date +"%A, %B %d, %Y")" >> "$DIARY_DIR$filename"
-echo "" >> "$DIARY_DIR$filename"
+echo "# Diary Entry - $(date +"%A, %B %d, %Y")" >> "$nameOfDir""$filename"
+echo "" >> "$nameOfDir""$filename"
 
 if ! command -v codium &> /dev/null; then
     echo "VSCodium not found. Opening with nano instead."
-    nano "$DIARY_DIR$filename"
+    nano "$nameOfDir""$filename"
 else
-    codium "$DIARY_DIR$filename"
+    codium "$nameOfDir""$filename"
 fi

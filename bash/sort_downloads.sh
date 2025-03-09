@@ -11,7 +11,7 @@ filename="sortResults_$now.txt"
 
 # Ensure target directories exist
 if [ ! -e "$HOME/.sortResults/" ]; then
-    echo "no sortResults folder making one now..."
+    echo "no .sortResults folder making one now..."
     mkdir .sortResults/
 fi
 
@@ -55,21 +55,28 @@ if [ ! -d "$HOME/.font_backups/" ]; then
     mkdir -p "$HOME/.font_backups/"
 fi
 
+if [ ! -d "$HOME/.torrents/" ]; then
+    echo "$HOME/.torrents/ does not exist, creating it now..."
+    mkdir -p "$HOME/.torrents/"
+fi
+
 dirName="$HOME/.sortResults"
-echo "$dirName is the directory"
+# move torrents first as they sometimes carry similar names
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.torrent" \) -exec echo mv {} $HOME/.torrents/ \; > "$dirName/$filename"
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.torrent" \) -exec mv {} $HOME/.torrents/ \;
 # Move Videos
 #find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo "Found: {}" \;
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec echo mv {} $HOME/Videos/ \; > "$dirName/$filename"
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -exec mv {} $HOME/Videos/ \;
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -exec echo mv {} $HOME/Videos/ \; > "$dirName/$filename"
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -exec mv {} $HOME/Videos/ \;
 # Move Music
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" -o -iname "*.aiff" -o -iname "*.dsd" -o -iname "*.pcm" \) -exec echo mv {} $HOME/Music/SongsToSort/ \; >> "$dirName/$filename"
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.mp3" -o -iname "*.flac" -o -iname "*.wav" -o -iname "*.aac" -o -iname "*.aiff" -o -iname "*.dsd" -o -iname "*.pcm" \) -exec mv {} $HOME/Music/SongsToSort/ \;
 # Move ISO files
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec echo mv {} $HOME/DiskImages/ \; >> "$dirName/$filename" 
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" \) -exec mv {} $HOME/DiskImages/ \; 
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" -o -iname "*.img.xz" \) -exec echo mv {} $HOME/DiskImages/ \; >> "$dirName/$filename" 
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.iso" -o -iname "*.img.xz" \) -exec mv {} $HOME/DiskImages/ \; 
 # Move Pictures
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.webp" \) -exec echo mv {} $HOME/Pictures/ToBeSorted/ \; >> $dirName/$filename 
-find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.webp" \) -exec mv {} $HOME/Pictures/ToBeSorted/ \;
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) -exec echo mv {} $HOME/Pictures/ToBeSorted/ \; >> $dirName/$filename 
+find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) -exec mv {} $HOME/Pictures/ToBeSorted/ \;
 # move SVGs
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.svg" \) -exec echo mv {} $HOME/Pictures/SVGs/ \; >> $dirName/$filename 
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.svg" \) -exec mv {} $HOME/Pictures/SVGs/ \; 
@@ -83,6 +90,8 @@ find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.txt" -o -iname "*.pdf" -o
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec echo mv {} $HOME/.font_backups/ \; >> $dirName/$filename
 find $HOME/Downloads/ -maxdepth 1 -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.woff" \) -exec mv {} $HOME/.font_backups/ \;
  
+
+
 echo "operation complete!"
 echo "please check the file inside" 
 echo "$dirName/$filename for your results"
