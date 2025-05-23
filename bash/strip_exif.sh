@@ -21,7 +21,10 @@ for IMAGE in "$DIR"/*.{jpg,jpeg,png,tiff}; do
     if [ -f "$IMAGE" ]; then
         echo "Stripping EXIF from $IMAGE"
         exiftool -gps:all= -iptc:all= -xmp:all= -DateTimeOriginal= -CreateDate= -ModifyDate= -overwrite_original "$IMAGE"
+        mv "$IMAGE" "$NEW_NAME"
+        echo "Renamed $IMAGE to $NEW_NAME"
     fi
 done
 
 echo "EXIF data has been stripped from all images in $DIR"
+echo "All files in $DIR have been renamed."
