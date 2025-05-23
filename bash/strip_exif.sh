@@ -6,21 +6,21 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-# Directory containing the images
+# Provided directory
 DIR="$1"
 
-# Ensure the directory exists
+# Does this directory exist?
 if [ ! -d "$DIR" ]; then
     echo "Directory not found: $DIR"
     exit 1
 fi
 
-# Loop through all image files in the directory
+# Loop through ever image file in the provided dir
 for IMAGE in "$DIR"/*.{jpg,jpeg,png,tiff}; do
-    # Check if the file exists (in case there are no matching files)
+    # Check if the file exists in case there are no matching files
     if [ -f "$IMAGE" ]; then
         echo "Stripping EXIF from $IMAGE"
-        exiftool -gps:all= -datetime:all= -iptc:all= -xmp:all= -overwrite_original "$IMAGE"
+        exiftool -gps:all= -iptc:all= -xmp:all= -DateTimeOriginal= -CreateDate= -ModifyDate= -overwrite_original "$IMAGE"
     fi
 done
 
