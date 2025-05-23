@@ -6,23 +6,34 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-# Provided directory
 DIR="$1"
-
+# remove trailing slash if present
+DIR="${DIR%/}"
 # Does this directory exist?
 if [ ! -d "$DIR" ]; then
     echo "Directory not found: $DIR"
     exit 1
 fi
 
-# Loop through ever image file in the provided dir
+counter=1
+
+# Loop through every image file in the provided directory
 for IMAGE in "$DIR"/*.{jpg,jpeg,png,tiff}; do
     # Check if the file exists in case there are no matching files
     if [ -f "$IMAGE" ]; then
+        # Get the file extension
+        EXT="${IMAGE##*.}"
+
+        # Generate a new generic name
+        NEW_NAME="$DIR/image_$counter.$EXT"
+
         echo "Stripping EXIF from $IMAGE"
         exiftool -gps:all= -iptc:all= -xmp:all= -DateTimeOriginal= -CreateDate= -ModifyDate= -overwrite_original "$IMAGE"
+
         mv "$IMAGE" "$NEW_NAME"
         echo "Renamed $IMAGE to $NEW_NAME"
+
+        ((counter++))
     fi
 done
 
