@@ -28,7 +28,7 @@ for IMAGE in "$DIR"/*.{jpg,jpeg,png,tiff}; do
         NEW_NAME="$DIR/image_$counter.$EXT"
 
         echo "Stripping EXIF from $IMAGE"
-        exiftool -gps:all= -iptc:all= -xmp:all= -DateTimeOriginal= -CreateDate= -ModifyDate= -overwrite_original "$IMAGE"
+        exiftool -gps:all= -gpslatitude="$LATITUDE" -gpslongitude="$LONGITUDE" -gpsdatetime="$DATETIME" -iptc:all= -xmp:all= -DateTimeOriginal= -CreateDate= -ModifyDate= -overwrite_original "$IMAGE"
 
         mv "$IMAGE" "$NEW_NAME"
         echo "Renamed $IMAGE to $NEW_NAME"
