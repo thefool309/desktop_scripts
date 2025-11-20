@@ -9,9 +9,25 @@ fi
 DIR="$1"
 # remove trailing slash if present
 DIR="${DIR%/}"
+
+ENV_FILE=".env"
+
+if [ -f "$ENV_FILE" ]; then
+    # shellcheck disable=SC1090
+    source "$ENV_FILE"
+else
+    echo ".env file not found!"
+    exit 1
+fi
+
 # Does this directory exist?
 if [ ! -d "$DIR" ]; then
     echo "Directory not found: $DIR"
+    exit 1
+fi
+
+if [ -z "$LATITUDE" ] || [ -z "$LONGITUDE" ] || [ -z "$DATETIME" ]; then
+    echo "LATITUDE, LONGITUDE, or DATETIME not set in .env"
     exit 1
 fi
 
