@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+#! remains untested !#
+
 exists() {
   command -v "$1" &> /dev/null 2>&1
 }
