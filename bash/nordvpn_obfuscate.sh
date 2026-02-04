@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 exists() {
-  command -v "$1" > /dev/null 2>&1
+  command -v "$1" &> /dev/null 2>&1
 }
 
 shutdown_w_error() {
@@ -31,4 +31,3 @@ if nordvpn c; then
 else
   shutdown_w_error "Failed to connect to NordVPN"
 fi
-
