@@ -19,8 +19,8 @@ shutdown() {
 if ! exists nordvpn ; then
   shutdown_w_error "You need to install NordVPN and login first"
 fi
-if ! nordvpn status | grep -q "Logged in: Yes"; then
-  shutdown_w_error "You are not logged in to NordVPN. Please log in first." 
+if ! nordvpn account | grep -q "Account Information"; then
+  shutdown_w_error "You are not logged in to NordVPN. Please log in first."
 fi
 
 nordvpn set technology OpenVPN
